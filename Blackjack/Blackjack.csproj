@@ -44,6 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="model\Card.cs" />
+    <Compile Include="model\Deck.cs" />
+    <Compile Include="model\Game.cs" />
+    <Compile Include="model\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

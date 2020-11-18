@@ -17,5 +17,16 @@ namespace Blackjack.model
         public int Value;
         public SuitType Suit;
         public int BlackJackValue;
+
+        public Card(int value, SuitType suit)
+        {
+            this.Value = value;
+            this.Suit = suit;
+        }
+
+        public override string ToString()
+        {
+            return "Card";
+        }
     }
 }
