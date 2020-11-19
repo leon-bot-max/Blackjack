@@ -8,11 +8,11 @@ namespace Blackjack.model
 {
     class Player
     {
-        public List<Card> Hand;
-        public Card LastDrawnCard;
-        public int LowValue;
-        public int HighValue;
-        public int BestValue;
+        public List<Card> Hand { get; set; }
+        public Card LastDrawnCard { get; set; }
+        public int LowValue { get; set; }
+        public int HighValue { get; set; }
+        public int BestValue { get; set; }
 
         public void Reset()
         {

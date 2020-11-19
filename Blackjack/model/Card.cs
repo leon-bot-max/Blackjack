@@ -14,9 +14,9 @@ namespace Blackjack.model
 {
     class Card
     {
-        public int Value;
-        public SuitType Suit;
-        public int BlackJackValue;
+        public int Value { get; set; }
+        public SuitType Suit { get; set; }
+        public int BlackJackValue { get; set; }
 
         public Card(int value, SuitType suit)
         {

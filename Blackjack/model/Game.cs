@@ -13,10 +13,10 @@ namespace Blackjack.model
 {
     class Game
     {
-        public Player Player;
-        public Player Dealer;
-        public Deck Deck;
-        public GameStatus Status;
+        public Player Player { get; set; }
+        public Player Dealer { get; set; }
+        public Deck Deck { get; set; }
+        public GameStatus Status { get; set; }
 
         public Game()
         {
