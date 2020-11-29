@@ -22,11 +22,28 @@ namespace Blackjack.model
         {
             this.Value = value;
             this.Suit = suit;
+            this.BlackJackValue = Math.Min(value, 10); //Klädda kort = 10
         }
 
         public override string ToString()
         {
-            return "Card";
+            string returnValue = Value + " of ";
+            switch (Suit)
+            {
+                case SuitType.Club:
+                    returnValue += "Club";
+                    break;
+                case SuitType.Diamond:
+                    returnValue += "Diamond";
+                    break;
+                case SuitType.Heart:
+                    returnValue += "Heart";
+                    break;
+                case SuitType.Spade:
+                    returnValue += "Spade";
+                    break;
+            }
+            return returnValue;
         }
     }
 }

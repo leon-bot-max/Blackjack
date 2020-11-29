@@ -25,12 +25,14 @@ namespace Blackjack.model
 
         public void Reset()
         {
-
+            Deck = new Deck(4); //nr of decks
+            Dealer.Reset();
+            Player.Reset();
         }
 
         public void PlayerDraw()
         {
-
+            //Player.Hand.Add(Deck.Draw());
         }
 
         public void DealerDraw()

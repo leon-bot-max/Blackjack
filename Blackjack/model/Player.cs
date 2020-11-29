@@ -8,7 +8,7 @@ namespace Blackjack.model
 {
     class Player
     {
-        public List<Card> Hand { get; set; }
+        public List<Card> Hand { get; set; } = new List<Card>();
         public Card LastDrawnCard { get; set; }
         public int LowValue { get; set; }
         public int HighValue { get; set; }
@@ -16,7 +16,11 @@ namespace Blackjack.model
 
         public void Reset()
         {
-
+            Hand = new List<Card>();
+            LastDrawnCard = null;
+            LowValue = 0;
+            HighValue = 0;
+            BestValue = 0;
         }
 
         public override string ToString()
