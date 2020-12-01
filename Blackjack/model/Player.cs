@@ -9,11 +9,43 @@ namespace Blackjack.model
     class Player
     {
         public List<Card> Hand { get; set; } = new List<Card>();
-        public Card LastDrawnCard { get; set; }
+        public Card LastDrawnCard { get { return LastDrawnCard; } 
+            set {
+                //Update LowValue, HighValue, BestValue
+            } 
+        }
         public int LowValue { get; set; }
         public int HighValue { get; set; }
         public int BestValue { get; set; }
 
+
+        public Player()
+        {
+            Reset();
+        }
+
+        private void UpdateValues()
+        {
+            LowValue = 0;
+            HighValue = 0;
+            foreach (Card card in Hand)
+            {
+                //Low
+                LowValue += card.BlackJackValue;//BlackJackValue is always lowest value
+
+                //High
+                if (card.Value == 1) //Is ace
+                {
+                    HighValue += 11;
+                }
+                else
+                {
+                    HighValue += card.BlackJackValue;
+                }
+            }
+
+
+        }
         public void Reset()
         {
             Hand = new List<Card>();
@@ -25,7 +57,13 @@ namespace Blackjack.model
 
         public override string ToString()
         {
-            return "Player";
+            string playerString = "";
+            //Implementera Low/High/Best
+            foreach (Card card in Hand)
+            {
+                playerString += card.ToString() + " ";
+            }
+            return playerString+BestValue;
         }
     }
 }

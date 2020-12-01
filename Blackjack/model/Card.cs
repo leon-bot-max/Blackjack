@@ -27,20 +27,39 @@ namespace Blackjack.model
 
         public override string ToString()
         {
-            string returnValue = Value + " of ";
+            string returnValue = "";
+
+            switch (Value)
+            {
+                case 11:
+                    returnValue += "J";
+                    break;
+                case 12:
+                    returnValue += "Q";
+                    break;
+                case 13:
+                    returnValue += "K";
+                    break;
+                case 1:
+                    returnValue += "A";
+                    break;
+                default:
+                    returnValue += Value;
+                    break;
+            }
             switch (Suit)
             {
                 case SuitType.Club:
-                    returnValue += "Club";
+                    returnValue += "c";
                     break;
                 case SuitType.Diamond:
-                    returnValue += "Diamond";
+                    returnValue += "d";
                     break;
                 case SuitType.Heart:
-                    returnValue += "Heart";
+                    returnValue += "h";
                     break;
                 case SuitType.Spade:
-                    returnValue += "Spade";
+                    returnValue += "s";
                     break;
             }
             return returnValue;
