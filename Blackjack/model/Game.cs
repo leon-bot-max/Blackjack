@@ -20,7 +20,7 @@ namespace Blackjack.model
 
         public Game()
         {
-
+            Reset();
         }
 
         public void Reset()
@@ -32,12 +32,16 @@ namespace Blackjack.model
 
         public void PlayerDraw()
         {
-            //Player.Hand.Add(Deck.Draw());
+            Card drawnCard = Deck.Draw();
+            Player.Hand.Add(drawnCard);
+            //Update gamestatus
         }
 
         public void DealerDraw()
         {
-
+            Card drawnCard = Deck.Draw();
+            Dealer.Hand.Add(drawnCard);
+            //Update gamestatus
         }
 
     }

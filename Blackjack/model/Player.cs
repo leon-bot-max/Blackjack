@@ -22,6 +22,7 @@ namespace Blackjack.model
 
         private void UpdateValues()
         {
+            int amountAce = 0;
             LowValue = 0;
             HighValue = 0;
             foreach (Card card in Hand)
@@ -33,10 +34,20 @@ namespace Blackjack.model
                 if (card.Value == 1) //Is ace
                 {
                     HighValue += 11;
+                    amountAce++;
                 }
                 else
                 {
                     HighValue += card.BlackJackValue;
+                }
+            }
+
+            BestValue = LowValue;
+            for (int i = 0; i < amountAce; i++)
+            {
+                if (BestValue+10 <= 21)
+                {
+                    BestValue += 10;//1 is already counted in low value
                 }
             }
 

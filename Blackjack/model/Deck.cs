@@ -57,10 +57,14 @@ namespace Blackjack.model
 
         public Card Draw()
         {
+            /*
             Random rnd = new Random();
             int index = rnd.Next(_cards.Count); //Random index
             Card card = _cards[index];
             _cards.RemoveAt(index);
+            */
+            Card card = _cards[0];
+            _cards.RemoveAt(0);
 
             return card;
         }
