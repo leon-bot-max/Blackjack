@@ -20,7 +20,7 @@ namespace Blackjack.model
             Reset();
         }
 
-        private void UpdateValues()
+        public void UpdateValues()
         {
             int amountAce = 0;
             LowValue = 0;
