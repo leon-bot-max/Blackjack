@@ -20,12 +20,15 @@ namespace Blackjack.model
 
         public Game()
         {
+            Player = new Player();
+            Dealer = new Player();
             Reset();
         }
 
         public void Reset()
         {
             Deck = new Deck(4); //nr of decks
+            Status = GameStatus.Playing;
             Dealer.Reset();
             Player.Reset();
         }
@@ -33,14 +36,18 @@ namespace Blackjack.model
         public void PlayerDraw()
         {
             Card drawnCard = Deck.Draw();
-            Player.Hand.Add(drawnCard);
+            Player.AddCard(drawnCard);
             //Update gamestatus
+            if (Player.BestValue == 21)
+            {
+                Status = GameStatus.Blackjack;
+            }
         }
 
         public void DealerDraw()
         {
             Card drawnCard = Deck.Draw();
-            Dealer.Hand.Add(drawnCard);
+            Dealer.AddCard(drawnCard);
             //Update gamestatus
         }
 

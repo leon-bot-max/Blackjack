@@ -10,14 +10,20 @@ namespace Blackjack
     {
         static void Main(string[] args)
         {
-            Player plr = new Player();
-            Deck deck = new Deck(1);
-            for (int i = 0; i < 3; i++)
-            {
-                plr.Hand.Add(deck.Draw());
-            }
-            Console.WriteLine(plr.ToString());
+            Game game = new Game();
+            game.DealerDraw();
+            Console.WriteLine("Dealer Hand: " + game.Dealer.ToString() + "("+ game.Dealer.HighValue +")");
+            game.PlayerDraw();
+            game.PlayerDraw();
+            Console.WriteLine("Your Hand: " + game.Player.ToString() + "(" + game.Player.BestValue + "/"+game.Player.HighValue +")");
+
             Console.ReadLine();
+
+            
         }
+
+        
     }
+
+    
 }

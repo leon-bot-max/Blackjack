@@ -19,6 +19,7 @@ namespace Blackjack.model
 
         public void ResetAndShuffle()
         {
+            _cards = new List<Card>();
             for (int i = 0; i < _nrOfDecks; i++)//nr of decks
             {
                 foreach (SuitType suit in Enum.GetValues(typeof(SuitType)))//all suits
@@ -44,7 +45,6 @@ namespace Blackjack.model
                  j ← random integer such that 0 ≤ j ≤ i
                  exchange a[j] and a[i]*/
 
-            int n = _cards.Count - 1;
             Random rnd = new Random();
             for (int i = _cards.Count-1; i > 1; i--)
             {
@@ -54,7 +54,10 @@ namespace Blackjack.model
                 _cards[i] = temp;
             }
         }
-
+        /// <summary>
+        /// Draws card at index 0
+        /// </summary>
+        /// <returns></returns>
         public Card Draw()
         {
             /*
@@ -63,6 +66,10 @@ namespace Blackjack.model
             Card card = _cards[index];
             _cards.RemoveAt(index);
             */
+            if (_cards.Count <= 0)
+            {
+                throw new IndexOutOfRangeException("No cards");
+            }
             Card card = _cards[0];
             _cards.RemoveAt(0);
 

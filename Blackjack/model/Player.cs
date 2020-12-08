@@ -20,7 +20,7 @@ namespace Blackjack.model
             Reset();
         }
 
-        public void UpdateValues()
+        private void UpdateValues()
         {
             int amountAce = 0;
             LowValue = 0;
@@ -53,6 +53,12 @@ namespace Blackjack.model
 
 
         }
+        public void AddCard(Card card)
+        {
+            Hand.Add(card);
+            LastDrawnCard = card;
+            UpdateValues();
+        }
         public void Reset()
         {
             Hand = new List<Card>();
@@ -70,7 +76,7 @@ namespace Blackjack.model
             {
                 playerString += card.ToString() + " ";
             }
-            return playerString+BestValue;
+            return playerString;
         }
     }
 }
