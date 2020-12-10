@@ -42,14 +42,58 @@ namespace Blackjack.model
             {
                 Status = GameStatus.Blackjack;
             }
+
         }
 
         public void DealerDraw()
         {
+            if (Dealer.HighValue >= 17)
+            {
+                SetWinner();
+                return;
+            }
             Card drawnCard = Deck.Draw();
             Dealer.AddCard(drawnCard);
-            //Update gamestatus
+
         }
 
+        private void SetWinner()
+        {
+            if (Dealer.HighValue > 21) //Dealer over 21
+            {
+                if (Player.BestValue > 21) //Both over 21
+                {
+                    Status = GameStatus.Tie;
+                }
+                else   //Player won
+                {
+                    Status = GameStatus.Won;
+                }
+            }
+            else if (Player.BestValue > 21)
+            {
+                Status = GameStatus.Lost;  //Player over 21
+            }
+            else if (Dealer.HighValue == Player.BestValue) //Both same value
+            {
+                if (Dealer.HighValue >= 17 && Dealer.HighValue <= 19) //Dealer win
+                {
+                    Status = GameStatus.Lost;
+                }
+                else                                                  //Tie
+                {
+                    Status = GameStatus.Tie;
+                }
+            }
+            else if (Dealer.HighValue > Player.BestValue) //Dealer has higher value than player, but not over 21
+            {
+                Status = GameStatus.Lost;
+            }
+            else if (Player.BestValue > Dealer.HighValue) //Player has higher value than dealer, but not over 21
+            {
+                Status = GameStatus.Won;
+            }
+            
+        }
     }
 }
