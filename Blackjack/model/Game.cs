@@ -42,12 +42,16 @@ namespace Blackjack.model
             {
                 Status = GameStatus.Blackjack;
             }
+            else if(Player.BestValue > 21) //This means player always lose on >21 even if dealer also is >21
+            {
+                Status = GameStatus.Lost;
+            }
 
         }
 
         public void DealerDraw()
         {
-            if (Dealer.HighValue >= 17)
+            if (Dealer.HighValue >= 17) //Dont draw more cards
             {
                 SetWinner();
                 return;
@@ -57,6 +61,9 @@ namespace Blackjack.model
 
         }
 
+        /// <summary>
+        /// Sets winner assuming all cards have been drawn
+        /// </summary>
         private void SetWinner()
         {
             if (Dealer.HighValue > 21) //Dealer over 21
@@ -72,7 +79,7 @@ namespace Blackjack.model
             }
             else if (Player.BestValue > 21)
             {
-                Status = GameStatus.Lost;  //Player over 21
+                Status = GameStatus.Lost;  //Player over 21, Dealer not
             }
             else if (Dealer.HighValue == Player.BestValue) //Both same value
             {
