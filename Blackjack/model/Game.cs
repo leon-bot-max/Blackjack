@@ -27,7 +27,7 @@ namespace Blackjack.model
 
         public void Reset()
         {
-            Deck = new Deck(4); //nr of decks
+            Deck = new Deck(1); //nr of decks
             Status = GameStatus.Playing;
             Dealer.Reset();
             Player.Reset();
@@ -57,7 +57,7 @@ namespace Blackjack.model
                 return;
             }
             Card drawnCard = Deck.Draw();
-            drawnCard.IsHidden = hidden; //Card face down
+            drawnCard.IsHidden = hidden; //Card hidden?
             
             Dealer.AddCard(drawnCard);
 

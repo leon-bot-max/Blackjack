@@ -23,5 +23,23 @@ namespace Blackjack.tests
             Assert.AreEqual(suit, card.Suit);
             Assert.AreEqual(blackJackValue, card.BlackJackValue);
         }
+        [Test]
+        public void TestCardToString()
+        {
+            Card card1 = new Card(1, SuitType.Heart);
+            Card card2 = new Card(11, SuitType.Club);
+            Card card3 = new Card(12, SuitType.Spade);
+            Card card4 = new Card(13, SuitType.Diamond);
+            Card card5 = new Card(5, SuitType.Heart);
+            card5.IsHidden = true;
+
+            Assert.AreEqual("Ah", card1.ToString());
+            Assert.AreEqual("Jc", card2.ToString());
+            Assert.AreEqual("Qs", card3.ToString());
+            Assert.AreEqual("Kd", card4.ToString());
+            Assert.AreEqual("[]", card5.ToString());
+
+
+        }
     }
 }

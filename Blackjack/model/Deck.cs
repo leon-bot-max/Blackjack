@@ -10,6 +10,7 @@ namespace Blackjack.model
     {
         private int _nrOfDecks;
         private List<Card> _cards = new List<Card>();
+        private Random rnd = new Random(); //Used for shuffle
 
         public Deck(int nrOfDecks)
         {
@@ -45,7 +46,6 @@ namespace Blackjack.model
                  j ← random integer such that 0 ≤ j ≤ i
                  exchange a[j] and a[i]*/
 
-            Random rnd = new Random();
             for (int i = _cards.Count-1; i > 1; i--)
             {
                 int k = rnd.Next(0, i + 1);
@@ -60,15 +60,9 @@ namespace Blackjack.model
         /// <returns></returns>
         public Card Draw()
         {
-            /*
-            Random rnd = new Random();
-            int index = rnd.Next(_cards.Count); //Random index
-            Card card = _cards[index];
-            _cards.RemoveAt(index);
-            */
             if (_cards.Count <= 0)
             {
-                throw new IndexOutOfRangeException("No cards");
+                ResetAndShuffle();
             }
             Card card = _cards[0];
             _cards.RemoveAt(0);

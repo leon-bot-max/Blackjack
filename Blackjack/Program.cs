@@ -16,12 +16,13 @@ namespace Blackjack
 
             while (true)
             {
-                //Cards to start game (Dealer has one hidden thats drawn on dealerturn instead)
+                //Cards to start game (Dealer has one hidden)
                 game.DealerDraw();
-                game.DealerDraw(true);
+                game.DealerDraw(true); //Hidden card
                 game.PlayerDraw();
                 game.PlayerDraw();
 
+                //Play turns
                 PlayerTurn(game);
                 DealerTurn(game);
 
@@ -76,19 +77,21 @@ namespace Blackjack
             while (playerTurn && game.Status == GameStatus.Playing)
             {
                 Console.Clear();
+                Console.WriteLine("---");
                 WriteHands(game);
                 Console.WriteLine("Draw (D) or Stay (S)");
+
                 //Get input
                 ConsoleKeyInfo input = Console.ReadKey();
 
-                if (input.Key == ConsoleKey.D)
+                if (input.Key == ConsoleKey.D)//draw
                 {
                     game.PlayerDraw();
                 }
-                else if (input.Key == ConsoleKey.S)
+                else if (input.Key == ConsoleKey.S)//stay
                 {
                     playerTurn = false;
-                }
+                }//else show again
             }
         }
 
