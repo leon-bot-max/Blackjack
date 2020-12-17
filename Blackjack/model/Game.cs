@@ -49,7 +49,7 @@ namespace Blackjack.model
 
         }
 
-        public void DealerDraw()
+        public void DealerDraw(bool hidden = false)
         {
             if (Dealer.HighValue >= 17) //Dont draw more cards
             {
@@ -57,6 +57,8 @@ namespace Blackjack.model
                 return;
             }
             Card drawnCard = Deck.Draw();
+            drawnCard.IsHidden = hidden; //Card face down
+            
             Dealer.AddCard(drawnCard);
 
         }

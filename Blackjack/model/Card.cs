@@ -17,7 +17,7 @@ namespace Blackjack.model
         public int Value { get; set; }
         public SuitType Suit { get; set; }
         public int BlackJackValue { get; set; }
-
+        public bool IsHidden { get; set; } = false;
         public Card(int value, SuitType suit)
         {
             this.Value = value;
@@ -27,6 +27,10 @@ namespace Blackjack.model
 
         public override string ToString()
         {
+            if (IsHidden)
+            {
+                return "[]";
+            }
             string returnValue = "";
 
             switch (Value)

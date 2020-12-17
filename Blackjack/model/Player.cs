@@ -27,6 +27,10 @@ namespace Blackjack.model
             HighValue = 0;
             foreach (Card card in Hand)
             {
+                if (card.IsHidden) //Dont count card
+                {
+                    continue;
+                }
                 //Low
                 LowValue += card.BlackJackValue;//BlackJackValue is always lowest value
 
@@ -59,6 +63,16 @@ namespace Blackjack.model
             LastDrawnCard = card;
             UpdateValues();
         }
+        public void UnHideCard(int index)
+        {
+            if (Hand[index].IsHidden)
+            {
+                LastDrawnCard = Hand[index];
+                Hand[index].IsHidden = false;
+                UpdateValues();
+            }
+
+        }
         public void Reset()
         {
             Hand = new List<Card>();
@@ -71,7 +85,6 @@ namespace Blackjack.model
         public override string ToString()
         {
             string playerString = "";
-            //Implementera Low/High/Best
             foreach (Card card in Hand)
             {
                 playerString += card.ToString() + " ";

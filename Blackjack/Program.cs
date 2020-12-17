@@ -14,35 +14,50 @@ namespace Blackjack
         {
             Game game = new Game();
 
-            //Cards to start game (Dealer has one hidden thats drawn on dealerturn instead)
-            game.DealerDraw();
-            game.PlayerDraw();
-            game.PlayerDraw();
-
-            PlayerTurn(game);
-            DealerTurn(game);
-
-            //Write out to show hands
-            Console.Clear();
-            WriteHands(game);
-
-            //Show result
-            switch (game.Status)
+            while (true)
             {
-                case GameStatus.Blackjack:
-                    Console.WriteLine("You won (Blackjack)");
-                    break;
-                case GameStatus.Won:
-                    Console.WriteLine("You won");
-                    break;
-                case GameStatus.Tie:
-                    Console.WriteLine("You tied");
-                    break;
-                case GameStatus.Lost:
-                    Console.WriteLine("You lost");
-                    break;
+                //Cards to start game (Dealer has one hidden thats drawn on dealerturn instead)
+                game.DealerDraw();
+                game.DealerDraw(true);
+                game.PlayerDraw();
+                game.PlayerDraw();
+
+                PlayerTurn(game);
+                DealerTurn(game);
+
+                //Write out to show hands
+                Console.Clear();
+                WriteHands(game);
+
+                //Show result
+                switch (game.Status)
+                {
+                    case GameStatus.Blackjack:
+                        Console.WriteLine("You won (Blackjack)");
+                        break;
+                    case GameStatus.Won:
+                        Console.WriteLine("You won");
+                        break;
+                    case GameStatus.Tie:
+                        Console.WriteLine("You tied");
+                        break;
+                    case GameStatus.Lost:
+                        Console.WriteLine("You lost");
+                        break;
+                }
+                
+                //Play again?
+                Console.WriteLine("Press ENTER to play again. Any other key to quit.");
+                ConsoleKeyInfo input = Console.ReadKey();
+                if (input.Key == ConsoleKey.Enter)
+                {
+                    game.Reset(); //Reset game
+                }
+                else
+                {
+                    Environment.Exit(0); //Exit successfully
+                }
             }
-            Console.ReadLine();
 
 
         }
@@ -79,16 +94,18 @@ namespace Blackjack
 
         private static void DealerTurn(Game game)
         {
-            game.DealerDraw(); //Dealer had hidden card in beginning
+            game.Dealer.UnHideCard(1); //Hidden card is at index 1
             while (game.Status == GameStatus.Playing)
             {
                 Console.Clear();
                 Console.WriteLine("...");
                 Console.WriteLine("Dealer shows: " + game.Dealer.LastDrawnCard.ToString());
                 WriteHands(game);
-                
                 Thread.Sleep(2000); //Wait 2000ms between draws
                 game.DealerDraw();
+
+                
+
             }
         }
 
