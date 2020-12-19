@@ -57,7 +57,6 @@ namespace Blackjack.model
         /// <summary>
         /// Draws card at index 0
         /// </summary>
-        /// <returns></returns>
         public Card Draw()
         {
             if (_cards.Count <= 0)
