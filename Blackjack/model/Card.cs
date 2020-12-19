@@ -14,15 +14,15 @@ namespace Blackjack.model
 {
     class Card
     {
-        public int Value { get; set; }
-        public SuitType Suit { get; set; }
-        public int BlackJackValue { get; set; }
+        public int Value { get; private set; }
+        public SuitType Suit { get; private set; }
+        public int BlackJackValue { get; private set; }
         public bool IsHidden { get; set; } = false;
         public Card(int value, SuitType suit)
         {
             this.Value = value;
             this.Suit = suit;
-            this.BlackJackValue = Math.Min(value, 10); //Klädda kort = 10
+            this.BlackJackValue = Math.Min(value, 10); //picture cards (11, 12, 13)= 10
         }
 
         public override string ToString()
@@ -31,8 +31,10 @@ namespace Blackjack.model
             {
                 return "[]";
             }
+      
             string returnValue = "";
 
+            
             switch (Value)
             {
                 case 11:
@@ -66,6 +68,7 @@ namespace Blackjack.model
                     returnValue += "♠";
                     break;
             }
+            
             return returnValue;
         }
     }

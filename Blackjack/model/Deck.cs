@@ -23,9 +23,9 @@ namespace Blackjack.model
             _cards = new List<Card>();
             for (int i = 0; i < _nrOfDecks; i++)//nr of decks
             {
-                foreach (SuitType suit in Enum.GetValues(typeof(SuitType)))//all suits
+                for (int value = 1; value <= 13; value++)//all values
                 {
-                    for (int value = 1; value <= 13; value++)//all values
+                    foreach (SuitType suit in Enum.GetValues(typeof(SuitType)))//all suits 
                     {
                         _cards.Add(new Card(value, suit));
                     }

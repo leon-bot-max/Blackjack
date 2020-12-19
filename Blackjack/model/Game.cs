@@ -13,9 +13,9 @@ namespace Blackjack.model
 {
     class Game
     {
-        public Player Player { get; set; }
-        public Player Dealer { get; set; }
-        public Deck Deck { get; set; }
+        public Player Player { get; private set; }
+        public Player Dealer { get; private set; }
+        public Deck Deck { get; private set; }
         public GameStatus Status { get; set; }
 
         public Game()
@@ -71,7 +71,7 @@ namespace Blackjack.model
         {
             if (Dealer.HighValue > 21) //Dealer over 21
             {
-                if (Player.BestValue > 21) //Both over 21
+                if (Player.BestValue > 21) //Both over 21, will never be reached because player loses on over 21 in PlayerDraw
                 {
                     Status = GameStatus.Tie;
                 }
@@ -82,7 +82,7 @@ namespace Blackjack.model
             }
             else if (Player.BestValue > 21)
             {
-                Status = GameStatus.Lost;  //Player over 21, Dealer not
+                Status = GameStatus.Lost;  //Player over 21, Dealer not. will never be reached because player loses on over 21 in PlayerDraw
             }
             else if (Dealer.HighValue == Player.BestValue) //Both same value
             {
