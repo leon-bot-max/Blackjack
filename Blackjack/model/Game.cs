@@ -20,6 +20,7 @@ namespace Blackjack.model
 
         public Game()
         {
+            Deck = new Deck(4); //nr of decks
             Player = new Player();
             Dealer = new Player();
             Reset();
@@ -27,7 +28,7 @@ namespace Blackjack.model
 
         public void Reset()
         {
-            Deck = new Deck(1); //nr of decks
+            Deck.ResetAndShuffle();
             Status = GameStatus.Playing;
             Dealer.Reset();
             Player.Reset();

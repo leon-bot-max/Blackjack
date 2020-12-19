@@ -33,10 +33,10 @@ namespace Blackjack.tests
             Card card5 = new Card(5, SuitType.Heart);
             card5.IsHidden = true;
 
-            Assert.AreEqual("Ah", card1.ToString());
-            Assert.AreEqual("Jc", card2.ToString());
-            Assert.AreEqual("Qs", card3.ToString());
-            Assert.AreEqual("Kd", card4.ToString());
+            Assert.AreEqual("A♥", card1.ToString());
+            Assert.AreEqual("J♣", card2.ToString());
+            Assert.AreEqual("Q♠", card3.ToString());
+            Assert.AreEqual("K♦", card4.ToString());
             Assert.AreEqual("[]", card5.ToString());
 
 

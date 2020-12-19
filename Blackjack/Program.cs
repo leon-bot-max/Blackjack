@@ -12,6 +12,9 @@ namespace Blackjack
 
         static void Main(string[] args)
         {
+            //Needed to show suit symbols
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
             Game game = new Game();
 
             while (true)
@@ -66,7 +69,7 @@ namespace Blackjack
         private static void WriteHands(Game game)
         {
             Console.WriteLine("Dealer Hand: " + game.Dealer.ToString() + "(" + game.Dealer.HighValue + ")");
-            Console.WriteLine("Your Hand: " + game.Player.ToString() + "(" + game.Player.BestValue + "/" + game.Player.HighValue + ")");
+            Console.WriteLine("Your Hand: " + game.Player.ToString() + "(" + game.Player.BestValue + ")");
         }
 
 

@@ -54,16 +54,16 @@ namespace Blackjack.model
             switch (Suit)
             {
                 case SuitType.Club:
-                    returnValue += "c";
+                    returnValue += "♣";
                     break;
                 case SuitType.Diamond:
-                    returnValue += "d";
+                    returnValue += "♦";
                     break;
                 case SuitType.Heart:
-                    returnValue += "h";
+                    returnValue += "♥";
                     break;
                 case SuitType.Spade:
-                    returnValue += "s";
+                    returnValue += "♠";
                     break;
             }
             return returnValue;
