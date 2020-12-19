@@ -46,7 +46,7 @@ namespace Blackjack.model
                  j ← random integer such that 0 ≤ j ≤ i
                  exchange a[j] and a[i]*/
 
-            for (int i = _cards.Count-1; i > 1; i--)
+            for (int i = _cards.Count-1; i >= 1; i--)
             {
                 int k = rnd.Next(0, i + 1);
                 Card temp = _cards[k];
